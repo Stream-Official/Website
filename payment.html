@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Subscription</title>
+
+<style>
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+background:#1f5e52;
+padding:20px;
+}
+
+.card{
+max-width:420px;
+margin:auto;
+background:#184b42;
+border-radius:25px;
+padding:25px 20px;
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.top-header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.top-header img{
+height:35px;
+}
+
+.top-header .company-name{
+font-size:18px;
+font-weight:700;
+}
+
+.main-heading{
+font-size:24px;
+font-weight:700;
+margin-top:10px;
+margin-bottom:15px;
+}
+
+.sub-text{
+font-size:16px;
+margin-bottom:20px;
+}
+
+.box{
+background:#2c7a6d;
+padding:14px;
+border-radius:16px;
+margin-bottom:14px;
+}
+
+.box-title{
+font-size:12px;
+margin-bottom:5px;
+}
+
+.box-value{
+font-size:17px;
+font-weight:700;
+}
+
+.copy-btn{
+float:right;
+background:#dce76a;
+color:black;
+padding:5px 12px;
+border-radius:10px;
+font-weight:600;
+font-size:13px;
+cursor:pointer;
+}
+
+.instruction{
+color:#e6ef6b;
+font-weight:600;
+}
+
+.timer{
+margin-top:8px;
+font-weight:700;
+font-size:16px;
+}
+
+.submit{
+background:#dce76a;
+color:black;
+padding:16px;
+border-radius:18px;
+text-align:center;
+font-size:17px;
+font-weight:700;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="top-header">
+<img src="stream.logo.png" alt="Stream Logo">
+<div class="company-name"></div>
+</div>
+
+<div class="main-heading">
+Complete Activation
+</div>
+
+<div class="sub-text">
+Hi <strong id="userName">user</strong>, To activate your STREAM account and unlock earnings features, kindly transfer exactly ₦12,000 to the account below.
+</div>
+
+<div class="box">
+<div class="box-title">Account Number</div>
+<div class="box-value">
+3003507163
+<span class="copy-btn">Copy</span>
+</div>
+</div>
+
+<div class="box">
+<div class="box-title">Account Name</div>
+<div class="box-value">JENUXHUB DIGITAL – STREAM</div>
+</div>
+
+<div class="box">
+<div class="box-title">Bank</div>
+<div class="box-value">KUDA MFB</div>
+</div>
+
+<div class="box">
+<div class="box-title">Amount to Pay</div>
+<div class="box-value">₦12,000</div>
+</div>
+
+<div class="box">
+<div class="box-title">Payment Instruction</div>
+<div class="instruction">
+Please avoid using OPAY for this transaction, as it may delay confirmation and affect withdrawals. STREAM supports Palmpay, Moniepoint, POS transfers, and all major banks except OPAY.
+</div>
+
+<div class="timer">8:00</div>
+
+</div>
+
+<a href="https://wa.me/message/Q5OASS4LRYFYL1" target="_blank" style="text-decoration:none;">
+    <div class="submit">
+        Submit Payment Evidence
+    </div>
+</a>
+</div>
+
+</div>
+
+<script>
+let duration = 8 * 60; 
+let time = duration;
+
+const timerDisplay = document.querySelector(".timer");
+
+setInterval(function () {
+
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerDisplay.textContent = minutes + ":" + seconds;
+
+    time--;
+
+    if (time < 0) {
+        time = duration;
+    }
+
+}, 1000);
+</script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const fullname = params.get("fullname");
+
+if (fullname) {
+    document.getElementById("userName").textContent = fullname;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Stream Account</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:linear-gradient(135deg,#e3ece8,#d4dfd9);
+}
+
+/* HEADER */
+.header{
+    background:#2f6b5f;
+    padding:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    height:45px;
+}
+
+.logo span{
+    color:white;
+    font-size:28px;
+    font-weight:600;
+    letter-spacing:0.5px;
+}
+
+/* MAIN */
+.container{
+    padding:40px 20px;
+    max-width:480px;
+    margin:auto;
+    animation:fadeUp 0.8s ease;
+}
+
+h1{
+    color:#2f6b5f;
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#5f5f5f;
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+/* CARD FORM */
+form{
+    background:white;
+    padding:28px;
+    border-radius:20px;
+    box-shadow:0 20px 45px rgba(0,0,0,0.08);
+}
+
+/* INPUTS */
+input, select{
+    width:100%;
+    padding:16px;
+    margin-bottom:18px;
+    border:1px solid #e5e5e5;
+    border-radius:12px;
+    font-size:15px;
+    transition:all 0.3s ease;
+}
+
+input:focus, select:focus{
+    outline:none;
+    border-color:#2f6b5f;
+    box-shadow:0 0 0 3px rgba(47,107,95,0.15);
+    transform:translateY(-2px);
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:17px;
+    background:#2f6b5f;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(47,107,95,0.25);
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">
+        <img src="stream-logo.png" alt="Stream Logo">
+        <span>
+    </div>
+</div>
+
+<div class="container">
+
+    <h1>Create an Account</h1>
+
+    <p class="subtitle">
+        You're seconds away from joining a global wave of creators, listeners, and earners. Let's start your flow!
+    </p>
+
+    <form action="payment.html" method="GET">
+
+       <input type="text" name="fullname" placeholder="Full Name" required>
+
+        <input type="text" name="username" placeholder="Username" required>
+
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+
+        <input type="email" name="email" placeholder="Email Address">
+
+        <select required>
+            <option selected>Activation Plan - ₦12,000</option>
+        </select>
+
+        <button type="submit">Create My Stream Account</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
