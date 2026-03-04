@@ -65,6 +65,7 @@ margin-bottom:5px;
 .box-value{
 font-size:17px;
 font-weight:700;
+position:relative;
 }
 
 .copy-btn{
@@ -76,6 +77,11 @@ border-radius:10px;
 font-weight:600;
 font-size:13px;
 cursor:pointer;
+transition:0.3s ease;
+}
+
+.copy-btn:active{
+transform:scale(0.95);
 }
 
 .instruction{
@@ -122,8 +128,8 @@ Hi <strong id="userName">user</strong>, To activate your STREAM account and unlo
 <div class="box">
 <div class="box-title">Account Number</div>
 <div class="box-value">
-3003507163
-<span class="copy-btn">Copy</span>
+<span id="accountNumber">3003507163</span>
+<span class="copy-btn" onclick="copyAccount()">Copy</span>
 </div>
 </div>
 
@@ -153,43 +159,72 @@ Please avoid using OPAY for this transaction, as it may delay confirmation and a
 </div>
 
 <a href="https://wa.me/message/Q5OASS4LRYFYL1" target="_blank" style="text-decoration:none;">
-    <div class="submit">
-        Submit Payment Evidence
-    </div>
-</a>
+<div class="submit">
+Submit Payment Evidence
 </div>
+</a>
 
 </div>
 
 <script>
-let duration = 8 * 60; 
+/* TIMER - Stops at 0 */
+let duration = 8 * 60;
 let time = duration;
-
 const timerDisplay = document.querySelector(".timer");
 
-setInterval(function () {
+const countdown = setInterval(function () {
 
-    let minutes = Math.floor(time / 60);
-    let seconds = time % 60;
+let minutes = Math.floor(time / 60);
+let seconds = time % 60;
+seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    timerDisplay.textContent = minutes + ":" + seconds;
+timerDisplay.textContent = minutes + ":" + seconds;
 
-    time--;
+time--;
 
-    if (time < 0) {
-        time = duration;
-    }
+if (time < 0) {
+clearInterval(countdown);
+timerDisplay.textContent = "0:00";
+}
 
 }, 1000);
-</script>
-<script>
+
+
+/* COPY FUNCTION */
+function copyAccount() {
+const accountNumber = document.getElementById("accountNumber").innerText;
+const button = event.target;
+
+navigator.clipboard.writeText(accountNumber).then(() => {
+button.innerText = "Copied!";
+button.style.background = "#b9d94f";
+
+setTimeout(() => {
+button.innerText = "Copy";
+button.style.background = "#dce76a";
+}, 2000);
+
+}).catch(() => {
+alert("Copy failed. Please copy manually.");
+});
+}
+
+
+/* AUTO COPY ON LOAD */
+window.addEventListener("load", function(){
+const accountNumber = document.getElementById("accountNumber").innerText;
+navigator.clipboard.writeText(accountNumber).catch(() => {});
+});
+
+
+/* GET NAME FROM URL */
 const params = new URLSearchParams(window.location.search);
 const fullname = params.get("fullname");
 
 if (fullname) {
-    document.getElementById("userName").textContent = fullname;
+document.getElementById("userName").textContent = fullname;
 }
 </script>
+
 </body>
 </html>
